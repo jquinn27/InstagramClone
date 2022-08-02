@@ -1,15 +1,15 @@
-import React from 'react';
-import App from './App';
-import FirebaseContext from './context/firebase'
-import {firebase, FieldValue} from './lib/firebase'
-import './app.css'
-import {createRoot} from 'react-dom/client'
+import React from "react";
+import App from "./App";
+import FirebaseContext from "./context/firebase";
+import { firebase, FieldValue } from "./lib/firebase";
+import "./app.css";
+import { createRoot } from "react-dom/client";
 
-const container = document.getElementById('root')
-const root = createRoot(container)
-
+const container = document.getElementById("root");
+const root = createRoot(container);
 
 root.render(
-<FirebaseContext.Provider value={{firebase, FieldValue}}>
-<App/>
-</FirebaseContext.Provider>)
+  <FirebaseContext.Provider value={{ firebase, FieldValue }}>
+    <App />
+  </FirebaseContext.Provider>
+);
