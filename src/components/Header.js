@@ -51,7 +51,7 @@ export default function Header() {
                   title="Sign Out"
                   onClick={() => firebase.auth().signOut()}
                   onKeyDown={(event) => {
-                    if (event.key == "Enter") {
+                    if (event.key === "Enter") {
                       firebase.auth().signOut();
                     }
                   }}
