@@ -46,6 +46,11 @@ export default function Header() {
                   </svg>
                 </Link>
 
+                <Link className="mr-6 mt-2" to={ROUTES.POST}>
+                  <button>
+                    <img className="w-7 h-7" src="../../images/post.png" />
+                  </button>
+                </Link>
                 <button
                   type="button"
                   title="Sign Out"
