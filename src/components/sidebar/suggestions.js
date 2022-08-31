@@ -5,7 +5,12 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { getSuggestedProfiles } from "../../services/firebase";
 import SuggestedProfile from "./suggested-profile";
 
-export default function Suggestions({ userId, following, loggedInUserDocId }) {
+export default function Suggestions({
+  userId,
+  following,
+  loggedInUserDocId,
+  profileSrc,
+}) {
   const [profiles, setProfiles] = useState(null);
 
   useEffect(() => {

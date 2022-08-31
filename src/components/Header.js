@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import FirebaseContext from "../context/firebase";
 import UserContext from "../context/user";
 import * as ROUTES from "../constants/routes";
 import { Link, useNavigate } from "react-router-dom";
+import useUser from "../hooks/use-user";
 
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
-  const { user } = useContext(UserContext);
+
+  const { user: loggedInUser } = useContext(UserContext);
+  const { user } = useUser(loggedInUser?.uid);
 
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
@@ -78,14 +81,11 @@ export default function Header() {
                 </button>
                 {user && (
                   <div className="flex items-center cursor-pointer">
-                    <Link to={`/p/${user.displayName}`}>
+                    <Link to={`/p/${user.username}`}>
                       <img
                         className="rounded-full h-8 w-8 flex"
-                        src={`/images/avatars/${user.displayName}.jpg`}
-                        alt={`${user.displayName} profile`}
-                        onError={(e) => {
-                          e.target.src = "/images/avatars/default.png";
-                        }}
+                        src={user.profileSrc}
+                        alt={user.profileSrc}
                       />
                     </Link>
                   </div>

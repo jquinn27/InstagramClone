@@ -43,6 +43,8 @@ export default function Signup() {
             emailAddress: emailAddress.toLowerCase(),
             following: ["2"],
             followers: [],
+            profileSrc:
+              "https://firebasestorage.googleapis.com/v0/b/instagram-97695.appspot.com/o/avatarPics%2Fdefault.png?alt=media&token=17d795da-dd3d-44b5-a5",
             dateCreated: Date.now(),
           });
 

@@ -23,6 +23,30 @@ export async function getUserByUsername(username) {
   }));
 }
 
+export async function getPicByUsername(username) {
+  const result = await firebase
+    .firestore()
+    .collection("users")
+    .where("username", "==", username.toLowerCase())
+    .get();
+
+  const data = result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+  return data[0].profileSrc;
+}
+
+export async function updateProfilePic(username, profileUrl) {
+  const result = await getUserByUsername(username);
+  const id = result[0].docId;
+  return firebase
+    .firestore()
+    .collection("users")
+    .doc(id)
+    .update({ profileSrc: profileUrl });
+}
+
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
   const result = await firebase
@@ -131,6 +155,22 @@ export async function getUserPhotosByUserId(userId) {
     docId: photo.id,
   }));
   return photos;
+}
+
+export async function createNewPost(userId, imageLink, caption) {
+  const result = await firebase
+    .firestore()
+    .collection("photos")
+    .add({
+      photoId: Math.floor(Math.random() * (100000 - 50 + 1)) + 50,
+      userId: userId,
+      imageSrc: imageLink,
+      caption: caption,
+      likes: [],
+      comments: [],
+      dateCreated: Date.now(),
+    });
+  return result;
 }
 
 export async function isUserFollowingProfile(
