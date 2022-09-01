@@ -48,9 +48,6 @@ export default function Post() {
     } else if (caption.length < 1) {
       toast.error("You must provide a caption.", toastOptions);
       return false;
-    } else if (selectedFile != ".png" || selectedFile != ".jpg") {
-      toast.error("Must be a .png or .jpg", toastOptions);
-      return false;
     }
     return true;
   };
@@ -105,6 +102,7 @@ export default function Post() {
                 <input
                   type="file"
                   className="opacity-0"
+                  accept="image/png, image/jpeg"
                   value={image}
                   onChange={onImageChange}
                 />

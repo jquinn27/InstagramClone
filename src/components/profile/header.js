@@ -104,6 +104,7 @@ export default function Header({
                   <input
                     type="file"
                     id="file"
+                    accept="image/png, image/jpeg"
                     ref={inputFile}
                     style={{ display: "none" }}
                     onChange={onImageChange}

@@ -5,7 +5,7 @@ import Timeline from "../components/Timeline";
 
 export default function Dashboard() {
   useEffect(() => {
-    document.title = "Instagram";
+    document.title = "Instagram Clone";
   }, []);
 
   return (
